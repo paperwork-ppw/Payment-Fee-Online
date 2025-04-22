@@ -25,11 +25,10 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
-            /* Copy protection styles */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* IE10+/Edge */
-            user-select: none; /* Standard */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         /* Disable image dragging */
@@ -44,12 +43,12 @@
 
         /* Disable context menu */
         body {
-            -webkit-touch-callout: none; /* iOS Safari */
-            -webkit-user-select: none; /* Safari */
-            -khtml-user-select: none; /* Konqueror HTML */
-            -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .bg-darker {
@@ -367,6 +366,163 @@
             transform: scale(1.1);
             opacity: 0.8;
         }
+
+        /* Custom SweetAlert2 styles */
+        .swal2-container {
+            backdrop-filter: blur(5px);
+        }
+
+        .swal2-popup {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            color: var(--text-light);
+        }
+
+        .swal2-toast.swal2-popup {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .swal2-title {
+            color: var(--luxury-green);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .swal2-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--luxury-green), transparent);
+        }
+
+        .swal2-content {
+            color: var(--text-light);
+        }
+
+        .swal2-actions {
+            margin: 1.25em auto 0;
+        }
+
+        .swal2-confirm {
+            background-color: rgba(0, 255, 170, 0.1) !important;
+            color: var(--luxury-green) !important;
+            border: 1px solid var(--luxury-green) !important;
+            border-radius: 8px !important;
+            padding: 8px 24px !important;
+            transition: all 0.3s ease !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .swal2-confirm:hover {
+            background-color: var(--luxury-green) !important;
+            color: var(--darker-bg) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 255, 170, 0.3) !important;
+        }
+
+        .swal2-timer-progress-bar {
+            background: linear-gradient(90deg, var(--luxury-green), #00cc88) !important;
+        }
+
+        /* Toast animation */
+        .swal2-show {
+            animation: toastSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .swal2-hide {
+            animation: toastSlideOut 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        }
+
+        @keyframes toastSlideIn {
+            0% {
+                transform: translateY(20px) scale(0.95);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes toastSlideOut {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(20px) scale(0.95);
+                opacity: 0;
+            }
+        }
+
+        /* Icon animation */
+        .swal2-icon.swal2-success {
+            border-color: var(--luxury-green) !important;
+            color: var(--luxury-green) !important;
+        }
+
+        .swal2-success-line-tip,
+        .swal2-success-line-long {
+            background-color: var(--luxury-green) !important;
+        }
+
+        .swal2-icon.swal2-success .swal2-success-ring {
+            border: 4px solid rgba(0, 255, 170, 0.3) !important;
+            animation: pulseRing 2s infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+        }
+
+        /* Shine effect */
+        .swal2-popup:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                var(--luxury-green),
+                transparent,
+                transparent,
+                transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 576px) {
             .qr-container {
@@ -548,7 +704,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"></center>
                         <div class="qr-container mb-3">
                             <img id="promptpay-qr-img" src="" alt="QR Code" style="width: 100%; height: 100%;">
@@ -585,7 +741,6 @@
 
                         <div class="capture-instruction">
                             <h5 class="luxury-text">กรุณาแคปหน้าจอเพื่อชำระเงิน</h5>
-                        
                         </div>
                     </div>
                 </div>
@@ -609,7 +764,7 @@
         let qrTimer;
         let timeLeft = 60; // 1 minute in seconds
         let transactionCounter = 0; // Starting counter for transaction IDs
-        
+
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
             // Set current date and time
@@ -622,21 +777,25 @@
 
             // Initialize amount display
             updateAmountDisplay();
-            
+
             // Copy protection - disable right click
             document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'การป้องกันการคัดลอก',
-                    text: 'ไม่สามารถใช้เมนูคลิกขวาได้ในหน้านี้',
+                    title: '<span style="color: var(--luxury-green);">การป้องกันการคัดลอก</span>',
+                    html: '<div style="color: var(--text-light);">ไม่สามารถใช้เมนูคลิกขวาได้ในหน้านี้</div>',
                     icon: 'warning',
-                    confirmButtonColor: '#00ffaa',
-                    background: '#121212',
-                    color: '#ffffff',
+                    confirmButtonColor: 'var(--luxury-green)',
+                    background: 'var(--card-bg)',
+                    customClass: {
+                        popup: 'luxury-toast-popup',
+                        title: 'luxury-toast-title',
+                        htmlContainer: 'luxury-toast-content'
+                    },
                     confirmButtonText: 'เข้าใจแล้ว'
                 });
             });
-            
+
             // Prevent image dragging
             document.querySelectorAll('img').forEach(img => {
                 img.addEventListener('dragstart', function(e) {
@@ -644,7 +803,8 @@
                 });
             });
         });
-        // Copy to clipboard function
+
+        // Copy to clipboard function with luxury toast
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 const Toast = Swal.mixin({
@@ -653,14 +813,42 @@
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
+                    background: 'var(--card-bg)',
+                    color: 'var(--text-light)',
+                    iconColor: 'var(--luxury-green)',
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
                         toast.onmouseleave = Swal.resumeTimer;
+
+                        // Add shine effect to icon
+                        const icon = toast.querySelector('.swal2-icon');
+                        if (icon) {
+                            icon.style.position = 'relative';
+                            icon.style.overflow = 'hidden';
+
+                            const shine = document.createElement('div');
+                            shine.style.position = 'absolute';
+                            shine.style.top = '-50%';
+                            shine.style.left = '-50%';
+                            shine.style.width = '200%';
+                            shine.style.height = '200%';
+                            shine.style.background = 'linear-gradient(to bottom right, transparent, transparent, transparent, rgba(0, 255, 170, 0.5), transparent, transparent, transparent)';
+                            shine.style.transform = 'rotate(30deg)';
+                            shine.style.animation = 'shine 1.5s infinite';
+                            shine.style.pointerEvents = 'none';
+
+                            icon.appendChild(shine);
+                        }
                     }
                 });
+
                 Toast.fire({
                     icon: 'success',
-                    title: 'Copy Success'
+                    title: '<span style="color: var(--luxury-green);">คัดลอกเลขบัญชีเรียบร้อยแล้ว</span>',
+                    customClass: {
+                        popup: 'luxury-toast-popup',
+                        title: 'luxury-toast-title'
+                    }
                 });
             }).catch(function(err) {
                 const Toast = Swal.mixin({
@@ -669,6 +857,9 @@
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
+                    background: 'var(--card-bg)',
+                    color: 'var(--text-light)',
+                    iconColor: '#ff6b6b',
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
                         toast.onmouseleave = Swal.resumeTimer;
@@ -676,7 +867,11 @@
                 });
                 Toast.fire({
                     icon: 'error',
-                    title: 'Copy Error'
+                    title: '<span style="color: #ff6b6b;">ไม่สามารถคัดลอกได้</span>',
+                    customClass: {
+                        popup: 'luxury-toast-popup',
+                        title: 'luxury-toast-title'
+                    }
                 });
             });
         }
@@ -810,80 +1005,80 @@
             }, 3000);
         }
 
-        function updateQRCode() {
-            let originalAmount = parseFloat(currentAmount);
-            let totalAmount = originalAmount + FEE_AMOUNT;
+             function updateQRCode() {
+                    let originalAmount = parseFloat(currentAmount);
+                    let totalAmount = originalAmount + FEE_AMOUNT;
 
-            let qrData = promptpayQr(phoneNumber, {amount: totalAmount});
-            let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=500x500&margin=10`;
-            $('#promptpay-qr-img').attr('src', qrUrl);
-        }
-
-        // Date and time functions
-        function updateDateTime() {
-            const now = new Date();
-            const options = { day: 'numeric', month: 'short', year: 'numeric' };
-            const dateStr = now.toLocaleDateString('en-US', options);
-            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-
-            document.getElementById('transaction-date').textContent = dateStr;
-            document.getElementById('transaction-time').textContent = timeStr;
-        }
-
-        // QR Timer functions
-        function startQRTimer() {
-            timeLeft = 60; // Reset to 1 minute
-            updateTimerDisplay();
-
-            // Clear any existing timer
-            if (qrTimer) {
-                clearInterval(qrTimer);
-            }
-
-            // Start new timer
-            qrTimer = setInterval(function() {
-                timeLeft--;
-                updateTimerDisplay();
-
-                if (timeLeft <= 0) {
-                    clearInterval(qrTimer);
-                    resetPage();
+                    let qrData = promptpayQr(phoneNumber, {amount: totalAmount});
+                    let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=500x500&margin=10`;
+                    $('#promptpay-qr-img').attr('src', qrUrl);
                 }
-            }, 1000);
-        }
 
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            const timerDisplay = document.getElementById('qr-timer');
+                // Date and time functions
+                function updateDateTime() {
+                    const now = new Date();
+                    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+                    const dateStr = now.toLocaleDateString('en-US', options);
+                    const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
-            timerDisplay.textContent = `QR Code จะหมดอายุในอีก: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    document.getElementById('transaction-date').textContent = dateStr;
+                    document.getElementById('transaction-time').textContent = timeStr;
+                }
 
-            // Change color when 10 seconds left
-            if (timeLeft <= 10) {
-                timerDisplay.style.color = '#ff6b6b';
-                timerDisplay.style.animation = 'pulse 0.5s infinite alternate';
-            } else {
-                timerDisplay.style.color = 'var(--luxury-green)';
-                timerDisplay.style.animation = 'none';
-            }
-        }
+                // QR Timer functions
+                function startQRTimer() {
+                    timeLeft = 60; // Reset to 1 minute
+                    updateTimerDisplay();
 
-        function resetPage() {
-            Swal.fire({
-                title: 'QR CODE EXPIRED',
-                text: 'ระบบได้ทำการรีเซ็ท QR CODE แล้ว กรุณาสร้างรายการใหม่',
-                icon: 'warning',
-                confirmButtonColor: '#00ffaa',
-                background: '#121212',
-                color: '#ffffff',
-                confirmButtonText: 'กลับหน้าหลัก'
-            }).then(() => {
-                navigateTo('home');
-                currentAmount = '0';
-                updateAmountDisplay();
-            });
-        }
-    </script>
-</body>
-</html>
+                    // Clear any existing timer
+                    if (qrTimer) {
+                        clearInterval(qrTimer);
+                    }
+
+                    // Start new timer
+                    qrTimer = setInterval(function() {
+                        timeLeft--;
+                        updateTimerDisplay();
+
+                        if (timeLeft <= 0) {
+                            clearInterval(qrTimer);
+                            resetPage();
+                        }
+                    }, 1000);
+                }
+
+                function updateTimerDisplay() {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    const timerDisplay = document.getElementById('qr-timer');
+
+                    timerDisplay.textContent = `QR Code จะหมดอายุในอีก: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                    // Change color when 10 seconds left
+                    if (timeLeft <= 10) {
+                        timerDisplay.style.color = '#ff6b6b';
+                        timerDisplay.style.animation = 'pulse 0.5s infinite alternate';
+                    } else {
+                        timerDisplay.style.color = 'var(--luxury-green)';
+                        timerDisplay.style.animation = 'none';
+                    }
+                }
+
+                function resetPage() {
+                    Swal.fire({
+                        title: 'QR CODE EXPIRED',
+                        text: 'ระบบได้ทำการรีเซ็ท QR CODE แล้ว กรุณาสร้างรายการใหม่',
+                        icon: 'warning',
+                        confirmButtonColor: '#00ffaa',
+                        background: '#121212',
+                        color: '#ffffff',
+                        confirmButtonText: 'กลับหน้าหลัก'
+                    }).then(() => {
+                        navigateTo('home');
+                        currentAmount = '0';
+                        updateAmountDisplay();
+                    });
+                }
+            </script>
+        </body>
+        </html>
