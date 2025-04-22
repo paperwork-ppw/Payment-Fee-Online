@@ -355,6 +355,18 @@
             margin-bottom: 10px;
         }
 
+        /* Copy icon style */
+        .copy-icon {
+            color: var(--luxury-green);
+            margin-left: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
         /* Responsive adjustments */
         @media (max-width: 576px) {
             .qr-container {
@@ -552,8 +564,9 @@
                                 <span class="transaction-value">นรินทร์ภัทร มีชัย</span>
                             </div>
                             <div class="transaction-detail">
-                                <span class="transaction-label">Account Number</span>
-                                <span class="transaction-value">140000621803299</span>
+                                   <span class="transaction-value">140000621803299 
+                                    <i class="fas fa-copy copy-icon" onclick="copyToClipboard('140000621803299')" title="Copy Account Number"></i>
+                                </span>
                             </div>
                             <div class="transaction-detail">
                                 <span class="transaction-label">Date</span>
@@ -630,6 +643,42 @@
                 });
             });
         });
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: 'success',
+                    title: 'คัดลอกเลขบัญชีเรียบร้อยแล้ว'
+                });
+            }).catch(function(err) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: 'error',
+                    title: 'ไม่สามารถคัดลอกได้'
+                });
+            });
+        }
 
         // Navigation functions
         function navigateTo(page) {
