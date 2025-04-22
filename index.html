@@ -842,12 +842,29 @@
                     }
                 });
 
-                Toast.fire({
+                 Toast.fire({
                     icon: 'success',
-                    title: '<span style="color: var(--luxury-green);">คัดลอกเลขบัญชีเรียบร้อยแล้ว</span>',
+                    title: '<span style="color: #00ffaa;">PAPER WORK PAYMENT</span>',
+                    html: '<div style="font-size: 0.8rem; color: #f0f0f0;"> Copy <span style="color: #00ffaa; font-weight: 450;"> 062-X-XXX2-9 </span> Success </div>',
                     customClass: {
                         popup: 'luxury-toast-popup',
-                        title: 'luxury-toast-title'
+                        title: 'luxury-toast-title',
+                        htmlContainer: 'luxury-toast-content'
+                    }
+                });
+            }).catch(function(err) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    background: 'var(--card-bg)',
+                    color: 'var(--text-light)',
+                    iconColor: '#ff6b6b',
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
                     }
                 });
             }).catch(function(err) {
