@@ -711,7 +711,7 @@
                         </div>
 
                         <div class="qr-timer" id="qr-timer">
-                            QR Code จะหมดอายุในอีก: 01:00
+                            QR Code จะหมดอายุในอีก: 00:30 วินาที
                         </div>
 
                         <div class="text-start mb-3">
@@ -762,7 +762,7 @@
         const phoneNumber = "140000621803299"; // PromptPay number
         const FEE_AMOUNT = 5.00; // Fixed fee amount
         let qrTimer;
-        let timeLeft = 60; // 1 minute in seconds
+        let timeLeft = 30; // 1 minute in seconds
         let transactionCounter = 0; // Starting counter for transaction IDs
 
         // Initialize the app
@@ -1044,7 +1044,7 @@
 
                 // QR Timer functions
                 function startQRTimer() {
-                    timeLeft = 60; // Reset to 1 minute
+                    timeLeft = 30; // Reset to 1 minute
                     updateTimerDisplay();
 
                     // Clear any existing timer
@@ -1065,8 +1065,8 @@
                 }
 
                 function updateTimerDisplay() {
-                    const minutes = Math.floor(timeLeft / 60);
-                    const seconds = timeLeft % 60;
+                    const minutes = Math.floor(timeLeft / 30);
+                    const seconds = timeLeft % 30;
                     const timerDisplay = document.getElementById('qr-timer');
 
                     timerDisplay.textContent = `QR Code จะหมดอายุในอีก: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
